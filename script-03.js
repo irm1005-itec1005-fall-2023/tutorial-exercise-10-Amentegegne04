@@ -26,11 +26,11 @@
 // 1. Array of pokemons that are provided by the user
 const pokemons = [];
 // 2. The ul for the list of pokemon
-
+const pokeList = document.querySelector(".poke-items");
 // 3. The form where we intake pokemon
-
+const pokeform = document.querySelector(".add-form");
 // 4. The form text element that has the name the user provided
-
+const pokeName =document.querySelector("#pokemon-name");
 
 //
 // FUNCTIONS
@@ -39,13 +39,13 @@ const pokemons = [];
 // 5. Handle the event when a user submits the form
 function addPokemonItem(event) {
   // Stop browser default form submission
-
+  event.preventDefault();
   // Get the text from the input field
-
+  const pokeName = pokeName.value;
   // Add the user defined pokemon to our array
-
+  pokemons.push(pokemonName);
   // Draw the list of pokemons using the renderList function
-
+  renderList(pokemons, pokeList);
   // Reset the form so that the text field name is cleared
   pokeForm.reset();
 }
@@ -59,7 +59,18 @@ function addPokemonItem(event) {
 function renderList() {
   // Clear all of the entries in the list
   // pokeList
+  while (pokeList.firstChild ){
+    pokeList.removeChild(pokeList.firstChild);
+  }
+  for(let i=0; i<pokeList.length;i++){
+    const listItem =document.createElement("li");
+    listItem.textContent=pokemons[i];
 
+    if(i === pokemons.length -1){
+      listItem.classList.add("new-item-animate")
+    }
+    listItem.appendChild(listItem);
+  }
   // For each item in the list add a list item
   // pokemons[]
 
